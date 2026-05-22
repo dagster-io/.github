@@ -24,7 +24,7 @@ Reports that do not meet these criteria may be closed without response:
 
 ### What to expect
 
-- **Acknowledgement:** We will acknowledge receipt of your report within **2 business days**.
+- **Acknowledgement:** We will acknowledge receipt of your report within **5 business days**.
 - **Triage:** We aim to confirm the vulnerability and assess its severity within **10 business days**.
 - **Resolution:** We will keep you informed of our progress and notify you when a fix has been released. For coordinated disclosure timelines, we will work with you directly.
 - **Credit:** With your permission, we will acknowledge your contribution in the release notes or security advisory.
