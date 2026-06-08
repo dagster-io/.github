@@ -17,21 +17,24 @@ We only accept vulnerability reports through the channels listed above. Reports 
 Reports that do not meet these criteria may be closed without response:
 
 - **Confirmed reproducibility** — verify the issue exists on the latest released version before reporting
-- **Step-by-step reproduction instructions** — we should be able to reproduce the issue independently following your steps
-- **Proof-of-concept code or a working exploit** — reports without a PoC are unlikely to be prioritized
+- **Step-by-step reproduction instructions** — we must be able to reproduce the issue independently following your steps
+- **Proof-of-concept code or a working exploit** — strongly encouraged; reports without one may receive lower priority
 - **Affected component(s)** — e.g., the Dagster core library, Dagster+, or a specific integration, with the version number
 - **Demonstrated impact** — describe what an attacker could concretely achieve, not just that a vulnerability class exists
 
+Submissions must reflect original analysis and meaningful human review. Reports based primarily on automated tooling without manual validation and demonstrated exploitability will be closed.
+
 ### What to expect
 
-- **Acknowledgement:** We will acknowledge receipt of your report within **5 business days**.
-- **Triage:** We aim to confirm the vulnerability and assess its severity within **10 business days**.
+- **Acknowledgement:** We will acknowledge receipt of your report.
+- **Triage:** We will confirm the vulnerability and assess its severity.
 - **Resolution:** We will keep you informed of our progress and notify you when a fix has been released. For coordinated disclosure timelines, we will work with you directly.
 - **Credit:** With your permission, we will acknowledge your contribution in the release notes or security advisory.
 
 We ask that you:
 
 - Give us reasonable time to address the issue before any public disclosure.
+- Do not use leaked or exposed credentials during testing.
 - Avoid accessing, modifying, or deleting data that does not belong to you.
 - Limit testing to your own accounts and environments.
 
@@ -41,7 +44,7 @@ This program covers vulnerabilities in:
 
 - The [Dagster open-source project](https://github.com/dagster-io/dagster) and all actively maintained open-source projects under the [dagster-io](https://github.com/dagster-io) GitHub organization
 - The Dagster+ hosted platform (`dagster.cloud` and `dagster.plus`)
-- [Dagster Compass](https://compass.dagster.io) (`compass.dagster.io`)
+- [Dagster Compass](https://dagstercompass.com) (`dagstercompass.com`)
 - Dagster Labs–operated APIs and web properties (`dagster.io`)
 
 **Out of scope:**
@@ -49,25 +52,31 @@ This program covers vulnerabilities in:
 - Vulnerabilities in third-party dependencies that are already tracked upstream
 - Archived or unmaintained repositories under the dagster-io GitHub organization
 - Forked third-party projects hosted under the dagster-io GitHub organization
-- Denial-of-service attacks
-- Issues in customer-managed infrastructure or code (Dagster's [hybrid architecture](https://docs.dagster.io/dagster-plus/deployment/deployment-types/hybrid/architecture) keeps customer code and data within the customer's own environment)
+- Denial-of-service, volumetric, or availability attacks
+- Issues in customer-managed infrastructure or code — Dagster's [hybrid architecture](https://docs.dagster.io/dagster-plus/deployment/deployment-types/hybrid/architecture) keeps customer code and data within the customer's own environment
 - Social engineering attacks targeting Dagster Labs employees
 - Physical security issues
+<!-- The following exclusion is Dagster-specific and should be reviewed periodically as the product evolves -->
 - Vulnerabilities that require the attacker to already have pipeline authoring access, code execution, or the ability to define Dagster ops/assets. Dagster pipelines execute arbitrary Python by design — attacks that require writing or modifying pipeline code are not considered vulnerabilities.
-- Deserialization vulnerabilities (e.g., pickle) in components where the serialized data is produced and consumed within the same trust boundary.
-- Path traversal via pipeline-author-controlled metadata.
+- Deserialization vulnerabilities (e.g., pickle) in components where the serialized data is produced and consumed within the same trust boundary
+- Path traversal via pipeline-author-controlled metadata
+- GraphQL configuration issues without demonstrated adverse impact
+- CSRF on forms that are available to anonymous users
+- Logout CSRF
+- Clickjacking on pages that do not contain sensitive actions
+- Self-XSS or attacks requiring physical access to the victim's device
+- Rate limiting or brute-force issues on non-sensitive endpoints
+- Vulnerabilities only affecting users on outdated or unpatched browsers and platforms
+- Testing that would result in sending spam or other unsolicited messages
+- Vulnerabilities on infrastructure or domains not owned or operated by Dagster Labs
 - Automated scanner output without demonstrated exploitability, including:
   - Email security configuration (DMARC, SPF, DKIM)
   - Missing or misconfigured security headers (CSP, X-Frame-Options, etc.)
   - TLS/SSL cipher suites, certificate configuration, or protocol versions
-  - DNS configuration issues
+  - DNS and DNSSEC configuration issues
+  - Lack of Secure/HTTPOnly flags on non-sensitive cookies
+  - Disclosure of known public files or directories (e.g., robots.txt)
 - Best-practice recommendations without a concrete, demonstrated attack scenario
-- Clickjacking on pages that do not contain sensitive actions
-- Self-XSS or attacks requiring physical access to the victim's device
-- Rate limiting or brute-force issues on non-sensitive endpoints
-- Vulnerabilities on infrastructure or domains not owned or operated by Dagster Labs
-
-Reports generated by or primarily based on automated scanning tools (e.g., Shodan, SecurityTrails, Qualys, Nessus, Burp Suite scanner) without manual validation and demonstrated impact will be closed without response.
 
 ## Security architecture
 
