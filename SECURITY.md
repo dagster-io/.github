@@ -6,11 +6,9 @@ Dagster Labs takes the security of its products seriously. We participate in a r
 
 **Please do not report security vulnerabilities through public GitHub issues, pull requests, or discussions.**
 
-Instead, report vulnerabilities by emailing **[vulnerability@dagsterlabs.com](mailto:vulnerability@dagsterlabs.com)**. This will open a ticket in our Bugcrowd-managed disclosure program directly — no Bugcrowd account required.
+Instead, report vulnerabilities using the disclosure form on our **[security page](https://dagster.io/security)**.
 
-If you prefer to submit via a web form, you can also use the disclosure form on our **[security page](https://dagster.io/security)**.
-
-We only accept vulnerability reports through the channels listed above. Reports submitted via third-party platforms (including Huntr) will not be monitored or actioned.
+We only accept vulnerability reports through Bugcrowd. Reports submitted via third-party platforms (including Huntr) will not be monitored or actioned.
 
 ### What to include in your report
 
